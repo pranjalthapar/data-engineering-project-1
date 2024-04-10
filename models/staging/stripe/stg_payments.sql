@@ -7,8 +7,7 @@ with payments as
     status as payment_status, 
     amount/100 as amount, 
     created as time_stamp
-    from
-    raw.stripe.payment
+    from {{ source('stripe', 'payment') }}
 )
 
 select * from payments
